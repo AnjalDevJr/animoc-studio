@@ -25,7 +25,7 @@ class EmailService {
     }
   }
 
-  sendEmail = async (to,subject,message) => {
+  sendEmail = async ({to,subject,message}) => {
     try {
       let response = await this.#transport.sendMail({
         to: to,
