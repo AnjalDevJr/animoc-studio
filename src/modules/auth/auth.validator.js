@@ -4,7 +4,7 @@ const registerDTO = Joi.object({
   name: Joi.string().min(2).max(50).required().messages({
     "string.empty": "Name should not be empty"
   }),
-  email: Joi.string().required().messages({
+  email: Joi.string().email().required().messages({
     "string.empty": "Email should not be empty"
   }),
   password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*_-])[a-zA-Z\d!@#$%&*_-]{8,15}$/).required().messages({
@@ -27,4 +27,18 @@ const registerDTO = Joi.object({
   image: Joi.any().optional()
 })
 
-module.exports = registerDTO
+const activateDTO = Joi.object({
+  email: Joi.string().email().required(),
+  otp: Joi.string().min(6).max(6).required()
+})
+
+const loginDTO = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required()
+})
+
+module.exports = {
+  registerDTO,
+  activateDTO,
+  loginDTO
+}
