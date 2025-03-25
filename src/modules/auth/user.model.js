@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { commonStr } = require("../../common/schema")
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -32,12 +33,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "customer"
   },
-  status: {
-    type: String,
-    default: 'inactive'
-  },
   otp: String,
-  otpExpiryTime: Date
+  otpExpiryTime: Date,
+  otpVerified: Boolean,
+  ...commonStr
 },{
   timestamps: true,      
   autoCreate: true, 
