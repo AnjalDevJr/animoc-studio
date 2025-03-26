@@ -37,8 +37,38 @@ const loginDTO = Joi.object({
   password: Joi.string().required()
 })
 
+const forgotPasswordDTO = Joi.object({
+  email: Joi.string().email().required().messages({
+    "string.empty": "Email should not be empty"
+  }),
+})
+
+const verifyOtpDTO = Joi.object({
+  email: Joi.string().email().required().messages({
+    "string.empty": "Email should not be empty"
+  }),
+  otp: Joi.string().min(6).max(6).required()
+})
+
+const resetPasswordDTO = Joi.object({
+  email: Joi.string().email().required().messages({
+    "string.empty": "Email should not be empty"
+  }),
+  password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*_-])[a-zA-Z\d!@#$%&*_-]{8,15}$/).required().messages({
+    "string.empty": "Password should not be empty",
+    "string.pattern.base": "Password should contain atleast one Capital Letter,one Small Letter, one digit and a special Character"
+  }),
+  confirmPassword: Joi.string().equal(Joi.ref('password')).required().messages({
+    "string.empty": "confirmPassword should not be empty",
+    "any.only": "confirmPassword does not match password" 
+  }),
+})
+
 module.exports = {
   registerDTO,
   activateDTO,
-  loginDTO
+  loginDTO,
+  forgotPasswordDTO,
+  verifyOtpDTO,
+  resetPasswordDTO
 }
