@@ -17,18 +17,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  country: {
-    type: String,
-    required: true
-  },
-  gender: {
-    type: String,
-    enum: {
-      values: ['male','female']
-    }
-  },
-  phone: String,
-  image: String,
+  // country: {
+  //   type: String,
+  //   required: true
+  // },
+  // gender: {
+  //   type: String,
+  //   enum: {
+  //     values: ['male','female']
+  //   }
+  // },
+  // phone: String,
+  // image: String,
   role: {
     type: String,
     default: "customer"
