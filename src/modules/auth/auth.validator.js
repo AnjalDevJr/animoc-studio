@@ -15,16 +15,16 @@ const registerDTO = Joi.object({
     "string.empty": "confirmPassword should not be empty",
     "any.only": "confirmPassword does not match password" 
   }),
-  country: Joi.string().required().messages({
-    "string.empty": "country should not be empty"
-  }),
-  phone: Joi.string().required().messages({
-    "string.empty": "phone number should not be empty"
-  }),
-  gender: Joi.string().regex(/^(male|female)$/).optional().messages({
-    "string.pattern.base": "Gender should be either male or female"
-  }),
-  image: Joi.any().optional()
+  // country: Joi.string().required().messages({
+  //   "string.empty": "country should not be empty"
+  // }),
+  // phone: Joi.string().required().messages({
+  //   "string.empty": "phone number should not be empty"
+  // }),
+  // gender: Joi.string().regex(/^(male|female)$/).optional().messages({
+  //   "string.pattern.base": "Gender should be either male or female"
+  // }),
+  // image: Joi.any().optional()
 })
 
 const activateDTO = Joi.object({
