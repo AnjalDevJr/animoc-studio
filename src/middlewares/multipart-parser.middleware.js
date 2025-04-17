@@ -35,7 +35,7 @@ const upload = (type = 'image') => {
       }
     },
     limits: {
-      fileSize: 5000000
+      fileSize: 10000000
     }
   })
 }
